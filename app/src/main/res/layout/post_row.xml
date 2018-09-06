@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="post"
+            type="com.inostudio.avinnikov.bestofbehanceandroid.viewmodel.main.ProjectListBinding" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:cardUseCompatPadding="true"
+            card_view:cardCornerRadius="10dp"
+            card_view:cardElevation="10dp">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/bookmarkCard"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    card_view:cardCornerRadius="4dp">
+
+                    <ImageView
+                        android:id="@+id/bookmark"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        app:srcCompat="@drawable/ic_bookmark_border" />
+                </android.support.v7.widget.CardView>
+
+                <ImageView
+                    android:id="@+id/postImage"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:padding="8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/profileImage"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:postImage="@{post.cover404}"
+                    tools:src="@drawable/catcopysize" />
+
+                <ImageView
+                    android:id="@+id/profileImage"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:visibility="@{post.grid ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/postImage"
+                    app:profileImage="@{post.image276}"
+                    tools:src="@drawable/catcopysize" />
+
+                <TextView
+                    android:id="@+id/firstLastName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{post.firstLastName}"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/profileImage"
+                    app:layout_constraintTop_toBottomOf="@+id/postImage"
+                    tools:text="123" />
+
+                <TextView
+                    android:id="@+id/occupation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{post.occupation}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/profileImage"
+                    app:layout_constraintTop_toBottomOf="@+id/firstLastName"
+                    tools:text="123" />
+
+                <View
+                    android:id="@+id/separation"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/occupation" />
+
+                <TextView
+                    android:id="@+id/viewsCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{String.valueOf(post.views)}"
+                    app:layout_constraintStart_toEndOf="@+id/eye"
+                    app:layout_constraintTop_toBottomOf="@+id/separation"
+                    app:text="@{post.cover404}"
+                    tools:text="123" />
+
+                <TextView
+                    android:id="@+id/appreciationsCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{String.valueOf(post.appreciations)}"
+                    app:layout_constraintStart_toEndOf="@+id/thumbs"
+                    app:layout_constraintTop_toBottomOf="@+id/separation"
+                    app:text="@{post.cover404}"
+                    tools:text="123" />
+
+                <TextView
+                    android:id="@+id/commentsCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{String.valueOf(post.comments)}"
+                    app:layout_constraintStart_toEndOf="@+id/comments"
+                    app:layout_constraintTop_toBottomOf="@+id/separation"
+                    app:text="@{post.cover404}"
+                    tools:text="123" />
+
+                <ImageView
+                    android:id="@+id/eye"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="9dp"
+                    app:icon="@{post.cover404}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/separation"
+                    tools:srcCompat="@drawable/ic_views" />
+
+                <ImageView
+                    android:id="@+id/thumbs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="11dp"
+                    app:icon="@{post.cover404}"
+                    app:layout_constraintStart_toEndOf="@+id/viewsCount"
+                    app:layout_constraintTop_toBottomOf="@+id/separation"
+                    tools:srcCompat="@drawable/ic_appreciation" />
+
+                <ImageView
+                    android:id="@+id/comments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    app:icon="@{post.cover404}"
+                    app:layout_constraintStart_toEndOf="@+id/appreciationsCount"
+                    app:layout_constraintTop_toBottomOf="@+id/separation"
+                    tools:srcCompat="@drawable/ic_comments" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/commentsCount"
+                    tools:layout_editor_absoluteX="220dp" />
+
+            </android.support.constraint.ConstraintLayout>
+        </android.support.v7.widget.CardView>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

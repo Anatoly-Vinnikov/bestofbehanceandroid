@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="user"
+            type="com.inostudio.avinnikov.bestofbehanceandroid.viewmodel.user.UserBinding" />
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/nav_active"
+            app:elevation="0dp">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll"
+                tools:context=".view.project.ProjectViewActivity">
+
+                <ImageView
+                    android:id="@+id/profileImage"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:profileImage="@{user.profileImage}"
+                    tools:src="@drawable/cat" />
+
+                <TextView
+                    android:id="@+id/firstLastName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@{user.firstLastName}"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profileImage"
+                    app:layout_scrollFlags="snap"
+                    tools:text="flname" />
+
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@{user.location}"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/firstLastName"
+                    tools:text="location" />
+
+                <com.ms.square.android.expandabletextview.ExpandableTextView
+                    android:id="@+id/about"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{user.about}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/followersCount"
+                    expandableTextView:animDuration="200"
+                    expandableTextView:maxCollapsedLines="4">
+
+                    <TextView
+                        android:id="@id/expandable_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black" />
+
+                    <ImageButton
+                        android:id="@id/expand_collapse"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|bottom"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@android:color/transparent" />
+                </com.ms.square.android.expandabletextview.ExpandableTextView>
+
+                <TextView
+                    android:id="@+id/occupation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@{user.occupation}"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/about"
+                    tools:text="occup" />
+
+                <ImageView
+                    android:id="@+id/pinterest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:onClick="@{(v) -> user.openLink(user.pinterestURL, v)}"
+                    android:visibility="@{user.pinterestURL.length() == 0 ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintEnd_toStartOf="@+id/instagram"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/occupation"
+                    app:srcCompat="@drawable/ic_pinterest" />
+
+                <ImageView
+                    android:id="@+id/instagram"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:onClick="@{(v) -> user.openLink(user.instagramURL, v)}"
+                    android:visibility="@{user.instagramURL.length() == 0 ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintEnd_toStartOf="@+id/facebook"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/pinterest"
+                    app:layout_constraintTop_toBottomOf="@+id/occupation"
+                    app:srcCompat="@drawable/ic_inst" />
+
+                <ImageView
+                    android:id="@+id/facebook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:onClick="@{(v) -> user.openLink(user.facebookURL, v)}"
+                    android:visibility="@{user.facebookURL.length() == 0 ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintEnd_toStartOf="@+id/behance"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/instagram"
+                    app:layout_constraintTop_toBottomOf="@+id/occupation"
+                    app:srcCompat="@drawable/ic_facebook" />
+
+                <ImageView
+                    android:id="@+id/behance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:onClick="@{(v) -> user.openLink(user.behanceURL, v)}"
+                    app:layout_constraintEnd_toStartOf="@+id/dribbble"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/facebook"
+                    app:layout_constraintTop_toBottomOf="@+id/occupation"
+                    app:srcCompat="@drawable/ic_be" />
+
+                <ImageView
+                    android:id="@+id/dribbble"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:onClick="@{(v) -> user.openLink(user.dribbbleURL, v)}"
+                    android:visibility="@{user.dribbbleURL.length() == 0 ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintEnd_toStartOf="@+id/twitter"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/behance"
+                    app:layout_constraintTop_toBottomOf="@+id/occupation"
+                    app:srcCompat="@drawable/ic_dribbble" />
+
+                <ImageView
+                    android:id="@+id/twitter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:onClick="@{(v) -> user.openLink(user.twitterURL, v)}"
+                    android:visibility="@{user.twitterURL.length() == 0 ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/dribbble"
+                    app:layout_constraintTop_toBottomOf="@+id/occupation"
+                    app:srcCompat="@drawable/ic_tweet" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/behance" />
+
+                <TextView
+                    android:id="@+id/viewsCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@{user.views}"
+                    app:layout_constraintEnd_toStartOf="@+id/thumbs"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/eye"
+                    app:layout_constraintTop_toBottomOf="@+id/location"
+                    tools:text="123" />
+
+                <TextView
+                    android:id="@+id/appreciationsCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@{user.appreciations}"
+                    app:layout_constraintEnd_toStartOf="@+id/followers"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/thumbs"
+                    app:layout_constraintTop_toBottomOf="@+id/location"
+                    tools:text="123" />
+
+                <TextView
+                    android:id="@+id/followersCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@{user.followers}"
+                    app:layout_constraintEnd_toStartOf="@+id/following"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/followers"
+                    app:layout_constraintTop_toBottomOf="@+id/location"
+                    tools:text="123" />
+
+                <TextView
+                    android:id="@+id/followingCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@{user.following}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/following"
+                    app:layout_constraintTop_toBottomOf="@+id/location"
+                    tools:text="123" />
+
+                <ImageView
+                    android:id="@+id/eye"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toStartOf="@+id/viewsCount"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/location"
+                    app:srcCompat="@drawable/ic_views" />
+
+                <ImageView
+                    android:id="@+id/thumbs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="19dp"
+                    app:layout_constraintEnd_toStartOf="@+id/appreciationsCount"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/viewsCount"
+                    app:layout_constraintTop_toBottomOf="@+id/location"
+                    app:srcCompat="@drawable/ic_appreciation" />
+
+                <ImageView
+                    android:id="@+id/followers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="18dp"
+                    app:layout_constraintEnd_toStartOf="@+id/followersCount"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/appreciationsCount"
+                    app:layout_constraintTop_toBottomOf="@+id/location"
+                    app:srcCompat="@drawable/ic_followers" />
+
+                <ImageView
+                    android:id="@+id/following"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="18dp"
+                    app:layout_constraintEnd_toStartOf="@+id/followingCount"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/followersCount"
+                    app:layout_constraintTop_toBottomOf="@+id/location"
+                    app:srcCompat="@drawable/ic_following" />
+
+            </android.support.constraint.ConstraintLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/projectsList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="35dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/nav_active"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_scrollFlags="snap"
+            tools:context=".view.project.ProjectViewActivity">
+
+            <View
+                android:id="@+id/separation"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/commentsCount1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Projects"
+                android:textColor="@color/colorPrimaryDark"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/separation" />
+
+            <ImageView
+                android:id="@+id/changeMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/separation2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/separation"
+                app:srcCompat="@drawable/ic_view_column_blue" />
+
+            <View
+                android:id="@+id/separation2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/commentsCount1" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

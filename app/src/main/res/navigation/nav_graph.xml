@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/projectsListFragment">
+
+    <fragment
+        android:id="@+id/projectsListFragment"
+        android:name="com.inostudio.avinnikov.bestofbehanceandroid.view.main.ProjectsListFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_projects_list">
+        <action
+            android:id="@+id/action_projectsListFragment_to_projectViewFragment"
+            app:destination="@id/projectViewFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_projectsListFragment_to_bookmarkedProjectsFragment"
+            app:destination="@id/bookmarkedProjectsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_projectsListFragment_to_bookmarkedPeopleFragment"
+            app:destination="@id/bookmarkedPeopleFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/projectViewFragment"
+        android:name="com.inostudio.avinnikov.bestofbehanceandroid.view.project.ProjectViewFragment"
+        android:label="SecondFragment">
+        <action
+            android:id="@+id/action_projectViewFragment_to_userFragment"
+            app:destination="@id/userFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookmarkedProjectsFragment"
+        android:name="com.inostudio.avinnikov.bestofbehanceandroid.view.bookmarkedprojects.BookmarkedProjectsFragment"
+        android:label="BookmarkedProjectsFragment">
+        <action
+            android:id="@+id/action_bookmarkedProjectsFragment_to_projectViewFragment"
+            app:destination="@id/projectViewFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.inostudio.avinnikov.bestofbehanceandroid.view.user.UserFragment"
+        android:label="UserFragment">
+        <action
+            android:id="@+id/action_userFragment_to_projectViewFragment"
+            app:destination="@id/projectViewFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookmarkedPeopleFragment"
+        android:name="com.inostudio.avinnikov.bestofbehanceandroid.view.bookmarkedpeople.BookmarkedPeopleFragment"
+        android:label="BookmarkedPeopleFragment">
+        <action
+            android:id="@+id/action_bookmarkedPeopleFragment_to_userFragment"
+            app:destination="@id/userFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+</navigation>

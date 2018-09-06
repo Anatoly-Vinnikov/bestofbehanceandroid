@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.inostudio.avinnikov.bestofbehanceandroid.viewmodel.user.UserBinding" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:cardUseCompatPadding="true"
+            card_view:cardCornerRadius="10dp"
+            card_view:cardElevation="10dp">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/bookmark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_bookmark" />
+
+                <ImageView
+                    android:id="@+id/profileImage"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:profileImage="@{user.profileImage}"
+                    tools:src="@drawable/catcopysize" />
+
+                <TextView
+                    android:id="@+id/firstLastName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{user.firstLastName}"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/profileImage"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="123" />
+
+                <TextView
+                    android:id="@+id/occupation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{user.occupation}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/profileImage"
+                    app:layout_constraintTop_toBottomOf="@+id/firstLastName"
+                    tools:text="123" />
+
+                <View
+                    android:id="@+id/separation"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profileImage" />
+
+                <TextView
+                    android:id="@+id/viewsCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{String.valueOf(user.views)}"
+                    app:layout_constraintStart_toEndOf="@+id/eye"
+                    app:layout_constraintTop_toBottomOf="@+id/separation"
+                    tools:text="123" />
+
+                <TextView
+                    android:id="@+id/appreciationsCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{String.valueOf(user.appreciations)}"
+                    app:layout_constraintStart_toEndOf="@+id/thumbs"
+                    app:layout_constraintTop_toBottomOf="@+id/separation"
+                    tools:text="123" />
+
+                <TextView
+                    android:id="@+id/followersCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{String.valueOf(user.followers)}"
+                    app:layout_constraintStart_toEndOf="@+id/followers"
+                    app:layout_constraintTop_toBottomOf="@+id/separation"
+                    tools:text="123" />
+
+                <TextView
+                    android:id="@+id/followingCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{String.valueOf(user.following)}"
+                    card_view:layout_constraintStart_toEndOf="@+id/following"
+                    card_view:layout_constraintTop_toBottomOf="@+id/separation"
+                    tools:text="123" />
+
+                <ImageView
+                    android:id="@+id/eye"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="9dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/separation"
+                    app:srcCompat="@drawable/ic_views" />
+
+                <ImageView
+                    android:id="@+id/thumbs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="11dp"
+                    app:layout_constraintStart_toEndOf="@+id/viewsCount"
+                    app:layout_constraintTop_toBottomOf="@+id/separation"
+                    app:srcCompat="@drawable/ic_appreciation" />
+
+                <ImageView
+                    android:id="@+id/followers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toEndOf="@+id/appreciationsCount"
+                    app:layout_constraintTop_toBottomOf="@+id/separation"
+                    app:srcCompat="@drawable/ic_followers" />
+
+                <ImageView
+                    android:id="@+id/following"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    card_view:layout_constraintStart_toEndOf="@+id/followersCount"
+                    card_view:layout_constraintTop_toBottomOf="@+id/separation"
+                    card_view:srcCompat="@drawable/ic_following" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/followersCount"
+                    tools:layout_editor_absoluteX="220dp" />
+
+            </android.support.constraint.ConstraintLayout>
+        </android.support.v7.widget.CardView>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

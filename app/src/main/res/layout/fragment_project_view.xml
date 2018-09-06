@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="project"
+            type="com.inostudio.avinnikov.bestofbehanceandroid.viewmodel.project.ProjectBinding" />
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/nav_active"
+            app:elevation="0dp">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_scrollFlags="scroll"
+                tools:context=".view.project.ProjectViewActivity">
+
+                <ImageView
+                    android:id="@+id/profileImage"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:profileImage="@{project.profileImage}"
+                    tools:src="@drawable/cat" />
+
+                <TextView
+                    android:id="@+id/firstLastName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@{project.firstLastName}"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/profileImage"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="123" />
+
+                <TextView
+                    android:id="@+id/occupation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@{project.occupation}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/profileImage"
+                    app:layout_constraintTop_toBottomOf="@+id/firstLastName"
+                    tools:text="123" />
+
+                <View
+                    android:id="@+id/separation"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/occupation" />
+
+                <TextView
+                    android:id="@+id/viewsCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{project.views}"
+                    app:layout_constraintStart_toEndOf="@+id/eye"
+                    app:layout_constraintTop_toBottomOf="@+id/separation"
+                    tools:text="123" />
+
+                <TextView
+                    android:id="@+id/appreciationsCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{project.appreciations}"
+                    app:layout_constraintStart_toEndOf="@+id/thumbs"
+                    app:layout_constraintTop_toBottomOf="@+id/separation"
+                    tools:text="123" />
+
+                <TextView
+                    android:id="@+id/commentsCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{project.comments}"
+                    app:layout_constraintStart_toEndOf="@+id/comments"
+                    app:layout_constraintTop_toBottomOf="@+id/separation"
+                    tools:text="123" />
+
+                <ImageView
+                    android:id="@+id/eye"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="9dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/separation"
+                    app:srcCompat="@drawable/ic_views" />
+
+                <ImageView
+                    android:id="@+id/thumbs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="11dp"
+                    app:layout_constraintStart_toEndOf="@+id/viewsCount"
+                    app:layout_constraintTop_toBottomOf="@+id/separation"
+                    app:srcCompat="@drawable/ic_appreciation" />
+
+                <ImageView
+                    android:id="@+id/comments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toEndOf="@+id/appreciationsCount"
+                    app:layout_constraintTop_toBottomOf="@+id/separation"
+                    app:srcCompat="@drawable/ic_comments" />
+
+                <TextView
+                    android:id="@+id/commentsCount1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@{project.comments1}"
+                    android:textColor="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/separation"
+                    tools:text="123" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/commentsCount1" />
+
+            </android.support.constraint.ConstraintLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/combineList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

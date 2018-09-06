@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Best Of Behance</string>
+    <string name="firstLastName">first_last_name</string>
+    <string name="occupation">occupation</string>
+    <string name="viewsCount">views_count</string>
+    <string name="appreciationsCount">likes_count</string>
+    <string name="commentsCount">comments_count</string>
+    <string name="change_mode">Изменить режим</string>
+    <string name="share">Поделиться</string>
+    <string name="bookmark_menu">Bookmarks</string>
+    <string name="comment_text">comment text</string>
+    <string name="date">Date</string>
+    <string name="module_text">module text</string>
+    <string name="network_connection">Проверьте ваще соединение…</string>
+    <string name="must_implement">must implement OnFragmentInteractionListener</string>
+    <string name="my_project_id">projectID</string>
+    <string name="user_id">userID</string>
+    <string name="people_title">Люди</string>
+    <string name="projects_title">Проекты</string>
+    <string name="project_title">Проект</string>
+    <string name="profile_title">Профиль</string>
+</resources>
